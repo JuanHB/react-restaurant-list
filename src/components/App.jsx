@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 class App extends Component {
 
-  title = 'My Minimal React Webpack Babel Setup';
+  title = 'React Restaurant List';
 
   render() {
     return (
