@@ -1,0 +1,36 @@
+{
+  "name": "react-restaurant-list",
+  "version": "1.0.0",
+  "description": "React Restaurant List Example",
+  "repository": "https://github.com/juanhb/react-restaurant-list",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Juan Biscaia",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "babel-loader": "^8.0.2",
+    "prop-types": "^15.6.2",
+    "react-hot-loader": "^4.3.11",
+    "react-router-dom": "^4.3.1",
+    "redux-devtools": "^3.4.1",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv-webpack": "^1.5.7",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux-devtools-extension": "^2.13.5"
+  }
+}
