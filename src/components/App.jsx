@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
-// import {BrowserRouter as Router} from "react-router-dom";
-// import { devToolsEnhancer  } from 'redux-devtools-extension';
+import {Provider} from 'react-redux';
+import { createStore } from 'redux';
+import reducers from 'src/reducers';
+import {BrowserRouter as Router} from "react-router-dom";
+import MainContainer from 'src/components/MainContainer/MainContainer';
+import { devToolsEnhancer  } from 'redux-devtools-extension';
 
 class App extends Component {
 
-  title = 'React Restaurant List';
-
   render() {
     return (
-      <div>{this.title}</div>
+      <Router>
+        <Provider store={createStore(reducers, devToolsEnhancer())}>
+          <MainContainer/>
+        </Provider>
+      </Router>
     );
   }
 
