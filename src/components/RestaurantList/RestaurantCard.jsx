@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
   return (
     <li>
-      restaurant item
+      { props.name }
     </li>
   )
 };

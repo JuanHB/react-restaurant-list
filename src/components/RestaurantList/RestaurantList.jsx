@@ -1,6 +1,6 @@
 import React from 'react';
 import * as actions from 'src/actions/Actions';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import RestaurantService from 'src/services/restaurant.service';
 import RestaurantCard from './RestaurantCard';
 
@@ -8,16 +8,26 @@ class RestaurantList extends React.Component {
 
   componentDidMount() {
     RestaurantService.getAll()
-      .then(response => {
-        this.props.storeRestaurantList(response.data);
-        console.log(this.props.restaurant);
-      });
+      .then(res => this.props.storeRestaurantList(res.data));
   }
 
-  renderList = () => this.props.restaurant.list.map(restaurant => <RestaurantCard key={ restaurant.id}/>);
+  renderList = () => this.props.restaurant.list.map(rest => {
+    return (
+      <RestaurantCard
+        key={ rest.id } { ...rest }
+      />
+    );
+  });
 
   render() {
-    return <ul> {this.renderList()} </ul>;
+    return (
+      <div>
+        <div> HEADER </div>
+        <div>
+          <ul> {this.renderList()} </ul>
+        </div>
+      </div>
+    );
   }
 
 }
