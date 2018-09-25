@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'src/components/Pages/RestaurantList/Card/Card';
 import { connect } from "react-redux";
+import index from "src/reducers";
 
 class List extends React.Component {
 

@@ -39,6 +39,6 @@ module.exports = {
     contentBase: './dist',
     hot: true,
     https: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
 };

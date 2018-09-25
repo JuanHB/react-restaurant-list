@@ -1,7 +1,7 @@
 import React from 'react';
 import * as actions from 'src/actions/Actions';
-import { connect } from 'react-redux';
-import RestaurantService from 'src/services/restaurant.service';
+import {connect} from 'react-redux';
+import RestaurantService from 'src/services/RestaurantService'
 import Header from './Header/Header'
 import Filter from './Filter/Filter'
 import List from './List/List'
@@ -9,16 +9,17 @@ import List from './List/List'
 class RestaurantListContainer extends React.Component {
 
   componentDidMount() {
-    RestaurantService.getAll()
-      .then(res => this.props.storeRestaurantList(res.data));
+    const restaurantService = new RestaurantService();
+    restaurantService.getAll()
+      .then(restaurants => this.props.storeRestaurantList(restaurants));
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Header/>
         <Filter/>
-        <List />
+        <List/>
       </div>
     );
   }

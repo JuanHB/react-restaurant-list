@@ -5,7 +5,7 @@ const Card = props => {
   return (
     <div>
       <Link to='/restaurant'>
-        { props.name }
+        { props.general.name }
       </Link>
     </div>
   );

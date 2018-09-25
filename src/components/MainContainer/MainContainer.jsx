@@ -5,6 +5,7 @@ import RestaurantDetails from 'src/components/RestaurantDetails/RestaurantDetail
 import RestaurantListContainer from 'src/components/Pages/RestaurantList/RestaurantListContainer'
 
 class MainContainer extends React.Component {
+
   render(){
     return (
       <div>

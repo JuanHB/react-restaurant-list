@@ -19,13 +19,10 @@ const restaurantReducer = (
 ) => {
 
   const { payload } = action;
-  console.log(payload)
   switch (action.type) {
-
     case types.STORE_RESTAURANT_LIST: {
       return {...state, list: payload };
     }
-
     default:
       return { ...state } ;
 
