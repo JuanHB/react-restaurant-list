@@ -9,9 +9,12 @@ import List from './List/List'
 class RestaurantListContainer extends React.Component {
 
   componentDidMount() {
-    const restaurantService = new RestaurantService();
-    restaurantService.getAll()
-      .then(restaurants => this.props.storeRestaurantList(restaurants));
+
+    if(!this.props.restaurant.list.length){
+      const restaurantService = new RestaurantService();
+      restaurantService.getAll()
+        .then(restaurants => this.props.storeRestaurantList(restaurants));
+    }
   }
 
   render() {
@@ -25,4 +28,8 @@ class RestaurantListContainer extends React.Component {
   }
 }
 
-export default connect(null, actions)(RestaurantListContainer);
+const mapStateToProps = state => ({
+  restaurant: state.restaurant
+});
+
+export default connect(mapStateToProps, actions)(RestaurantListContainer);

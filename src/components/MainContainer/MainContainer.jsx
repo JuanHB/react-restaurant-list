@@ -10,7 +10,7 @@ class MainContainer extends React.Component {
     return (
       <div>
         <Route exact path={makeRoute('/')} component={RestaurantListContainer}/>
-        <Route path={makeRoute('/restaurant')} component={RestaurantDetails}/>
+        <Route path={makeRoute('/restaurant/:id')} component={RestaurantDetails}/>
       </div>
     )
   }

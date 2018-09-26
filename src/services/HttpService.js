@@ -13,7 +13,11 @@ class HttpService {
 
     // creating the axios instance and setting the default parameters
     this.client = axios.create({
-      baseURL: process.env.API_URL
+      baseURL: process.env.API_URL,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+      }
     });
 
     // setting the api auth token header for all requests
@@ -24,7 +28,7 @@ class HttpService {
 
     // intercepts 401 errors to create new api auth tokens when needed
     this.client.interceptors.response.use(null, error => {
-      if(error.response.status === 401 && error.config){
+      if(error.response && error.response.status === 401 && error.config){
         return this.requestNewToken()
           .then(token => {
             error.config.headers.token = token;
