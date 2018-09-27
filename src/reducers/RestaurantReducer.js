@@ -1,15 +1,9 @@
 import * as types from 'src/actions/Types';
 
-/**
- * This Reducer uses the Local Storage to save and load the configs
- * @param state
- * @param action
- * @returns {*}
- */
-
 let initialState = () => {
   return {
-    list: []
+    sourceList: [],
+    filteredList: []
   }
 };
 
@@ -20,8 +14,11 @@ const restaurantReducer = (
 
   const { payload } = action;
   switch (action.type) {
-    case types.STORE_RESTAURANT_LIST: {
-      return {...state, list: payload };
+    case types.STORE_RESTAURANT_INITIAL_LIST_LOAD: {
+      return {...state, sourceList: payload, filteredList: payload };
+    }
+    case types.UPDATE_RESTAURANT_FILTERED_LIST: {
+      return {...state, filteredList: payload };
     }
     default:
       return { ...state } ;

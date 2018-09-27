@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class List extends React.Component {
 
-  renderList = () => this.props.restaurant.list.map(
+  renderList = () => this.props.restaurant.filteredList.map(
     rest => <Card key={rest.id} {...rest} />
   );
 

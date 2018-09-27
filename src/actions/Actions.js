@@ -1,8 +1,11 @@
 import * as types from './Types';
 
-export const storeRestaurantList = (list) => {
-  return {
-    type: types.STORE_RESTAURANT_LIST,
-    payload: list
-  }
-};
+export const storeRestaurantInitialListLoad = list => ({
+  type: types.STORE_RESTAURANT_INITIAL_LIST_LOAD,
+  payload: list
+});
+
+export const updateRestaurantFilteredList = list => ({
+  type: types.UPDATE_RESTAURANT_FILTERED_LIST,
+  payload: list
+});

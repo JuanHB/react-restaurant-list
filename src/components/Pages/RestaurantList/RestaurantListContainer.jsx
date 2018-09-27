@@ -10,10 +10,10 @@ class RestaurantListContainer extends React.Component {
 
   componentDidMount() {
 
-    if(!this.props.restaurant.list.length){
+    if(!this.props.restaurant.sourceList.length){
       const restaurantService = new RestaurantService();
       restaurantService.getAll()
-        .then(restaurants => this.props.storeRestaurantList(restaurants));
+        .then(restaurants => this.props.storeRestaurantInitialListLoad(restaurants));
     }
   }
 
