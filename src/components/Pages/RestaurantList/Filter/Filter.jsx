@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import * as actions from 'src/actions/Actions';
 import { withRouter } from 'react-router-dom';
-import { FilterByQuery, SortByProp } from './FilterHelpers';
+import { FilterByQuery, SortList } from 'src/helpers/FilterHelpers';
 import queryString from 'query-string';
 
 class Filter extends React.Component {
@@ -18,6 +18,13 @@ class Filter extends React.Component {
     sortBy: 'name-asc'
   };
 
+  componentDidMount(){
+    const {sortBy} = queryString.parse(this.props.location.search);
+    if(sortBy){
+      this.setState({sortBy});
+    }
+  }
+
   handleQueryChange = event => {
     const
       query = event.target.value.toLowerCase(),
@@ -32,9 +39,8 @@ class Filter extends React.Component {
 
   doSort = (sortBy) => {
     const
-      [prop, order] = sortBy.split('-'),
       filtered = this.props.restaurant.filteredList,
-      sorted = SortByProp({ list: filtered, prop, order });
+      sorted = SortList({ list: filtered, sortBy });
 
     this.props.history.push({
       search: queryString.stringify({ sortBy })

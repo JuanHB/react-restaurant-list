@@ -25,12 +25,12 @@ const FilterByQuery = ({list, query}) => {
  * if prop === name -> restaurant.general.name
  * if prop === rating -> restaurant.rating.average
  * @param list
- * @param prop {String} - Accepts: name, rating
- * @param order {String} - Accepts: asc, desc
+ * @param sortBy
  * @returns {Array}
  */
-const SortByProp = ({list, prop, order}) => {
+const SortList = ({list, sortBy}) => {
   const
+    [prop, order] = sortBy.split('-'),
     firstNameToLower = (fullName) => {
       const wsIndex = fullName.indexOf(' ');
       let result = wsIndex === -1
@@ -52,4 +52,4 @@ const SortByProp = ({list, prop, order}) => {
 
 };
 
-export { FilterByQuery, SortByProp };
+export { FilterByQuery, SortList };
