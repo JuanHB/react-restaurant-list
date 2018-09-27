@@ -5,7 +5,7 @@ const Card = props => {
   return (
     <div>
       <Link to={`/restaurant/${props.id}`}>
-        { props.general.name }
+        { props.general.name } - { props.rating.average }
       </Link>
     </div>
   );
