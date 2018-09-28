@@ -9,3 +9,8 @@ export const updateRestaurantFilteredList = list => ({
   type: types.UPDATE_RESTAURANT_FILTERED_LIST,
   payload: list
 });
+
+export const updateSelectedSortOption = sortBy => ({
+  type: types.UPDATE_SELECTED_SORT_OPTION,
+  payload: sortBy
+});

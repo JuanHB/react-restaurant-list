@@ -8,22 +8,8 @@ import queryString from 'query-string';
 class Filter extends React.Component {
 
   state = {
-    query: '',
-    sortOptions: [
-      { label: 'Name A-Z', value: 'name-asc' },
-      { label: 'Name Z-A', value: 'name-desc' },
-      { label: 'Rating Ascending', value: 'rating-asc' },
-      { label: 'Rating Descending', value: 'rating-desc' },
-    ],
-    sortBy: 'name-asc'
+    query: ''
   };
-
-  componentDidMount(){
-    const {sortBy} = queryString.parse(this.props.location.search);
-    if(sortBy){
-      this.setState({sortBy});
-    }
-  }
 
   handleQueryChange = event => {
     const
@@ -47,11 +33,11 @@ class Filter extends React.Component {
     });
 
     this.props.updateRestaurantFilteredList(sorted);
-    this.setState({ sortBy })
+    this.props.updateSelectedSortOption(sortBy)
   };
 
   renderSortOptions = () => {
-    return this.state.sortOptions.map((opt, index) =>
+    return this.props.filter.sortOptions.map((opt, index) =>
       <option key={index} value={opt.value}>{opt.label}</option>
     );
   };
@@ -60,8 +46,8 @@ class Filter extends React.Component {
     return (
       <div>
         <form>
-          <input type={'text'} placeholder={'filter'} onChange={this.handleQueryChange}/>
-          <select onChange={this.handleSortChange} value={this.state.sortBy}>
+          <input type={'text'} value={this.state.query} placeholder={'filter'} onChange={this.handleQueryChange} />
+          <select onChange={this.handleSortChange} value={this.props.filter.sortBy}>
             { this.renderSortOptions() }
           </select>
         </form>
@@ -71,7 +57,8 @@ class Filter extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  restaurant: state.restaurant
+  restaurant: state.restaurant,
+  filter: state.filter
 });
 
 export default withRouter(connect(mapStateToProps, actions)(Filter));

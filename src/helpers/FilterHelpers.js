@@ -13,9 +13,9 @@ const FilterByQuery = ({list, query}) => {
     const { address, general } = rest;
     const { name, categories } = general;
     // checks for the string value on name, or categories, or address
-    return name.toLowerCase().indexOf(query) !== -1
-      || categories[0].indexOf(query) !== -1
-      || Object.values(address).join(',').toLowerCase().indexOf(query) !== -1
+    return name.toLowerCase().indexOf(query) !== -1;
+      // || categories[0].indexOf(query) !== -1
+      // || Object.values(address).join(',').toLowerCase().indexOf(query) !== -1
   });
 };
 

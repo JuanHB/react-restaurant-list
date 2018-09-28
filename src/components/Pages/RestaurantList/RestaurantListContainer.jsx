@@ -12,7 +12,6 @@ import { SortList } from 'src/helpers/FilterHelpers';
 class RestaurantListContainer extends React.Component {
 
   componentDidMount() {
-
     if(!this.props.restaurant.sourceList.length){
       const restaurantService = new RestaurantService();
       restaurantService.getAll()
@@ -21,6 +20,7 @@ class RestaurantListContainer extends React.Component {
           const { sortBy } = queryString.parse(this.props.location.search);
           if(sortBy) {
             const sorted = SortList({ list: restaurants, sortBy });
+            this.props.updateSelectedSortOption(sortBy);
             this.props.updateRestaurantFilteredList(sorted);
           }
         });
