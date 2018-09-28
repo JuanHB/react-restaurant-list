@@ -14,12 +14,16 @@ const restaurantReducer = (
 
   const { payload } = action;
   switch (action.type) {
-    case types.STORE_RESTAURANT_INITIAL_LIST_LOAD: {
-      return {...state, sourceList: payload, filteredList: payload };
-    }
-    case types.UPDATE_RESTAURANT_FILTERED_LIST: {
+    case types.STORE_RESTAURANT_INITIAL_LIST_LOAD:
+
+      const distinctList = payload.filter((toFilter, index, self) =>
+        index === self.findIndex(toCompare => toFilter.id === toCompare.id)
+      );
+      return {...state, sourceList: distinctList, filteredList: distinctList };
+
+    case types.UPDATE_RESTAURANT_FILTERED_LIST:
       return {...state, filteredList: payload };
-    }
+
     default:
       return { ...state } ;
 

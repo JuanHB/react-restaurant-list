@@ -7,9 +7,7 @@ import queryString from 'query-string';
 
 class Filter extends React.Component {
 
-  state = {
-    query: ''
-  };
+  state = { query: '' };
 
   handleQueryChange = event => {
     const
@@ -25,29 +23,35 @@ class Filter extends React.Component {
 
   doSort = (sortBy) => {
     const
-      filtered = this.props.restaurant.filteredList,
-      sorted = SortList({ list: filtered, sortBy });
+      list = this.props.restaurant.filteredList,
+      sorted = SortList({ list, sortBy });
 
     this.props.history.push({
       search: queryString.stringify({ sortBy })
     });
 
     this.props.updateRestaurantFilteredList(sorted);
-    this.props.updateSelectedSortOption(sortBy)
+    this.props.updateSelectedFilterOption('sort', sortBy);
   };
 
   renderSortOptions = () => {
-    return this.props.filter.sortOptions.map((opt, index) =>
+    const { options: sortOptions } = this.props.filter.sort;
+    return sortOptions.map((opt, index) =>
       <option key={index} value={opt.value}>{opt.label}</option>
     );
   };
 
+  renderCategories = () => {
+
+  };
+
   render () {
+    const { selected: selectedSort } = this.props.filter.sort;
     return (
       <div>
         <form>
           <input type={'text'} value={this.state.query} placeholder={'filter'} onChange={this.handleQueryChange} />
-          <select onChange={this.handleSortChange} value={this.props.filter.sortBy}>
+          <select onChange={this.handleSortChange} value={selectedSort}>
             { this.renderSortOptions() }
           </select>
         </form>

@@ -15,12 +15,7 @@ class RestaurantService {
 
   getAll() {
     return this.http.get('/restaurants')
-      .then(response => {
-        // removing duplicated entries
-        return response.data.data.filter((toFilter, index, self) =>
-          index === self.findIndex(toCompare=> toFilter.id === toCompare.id)
-        );
-      });
+      .then(res => res.data.data);
   }
 
   getById() {

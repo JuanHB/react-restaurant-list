@@ -2,13 +2,19 @@ import * as types from 'src/actions/Types';
 
 let initialState = () => {
   return {
-    sortOptions: [
-      { label: 'Name A-Z', value: 'name-asc' },
-      { label: 'Name Z-A', value: 'name-desc' },
-      { label: 'Rating Ascending', value: 'rating-asc' },
-      { label: 'Rating Descending', value: 'rating-desc' },
-    ],
-    sortBy: 'name-asc'
+    sort: {
+      selected: 'name-asc',
+      options: [
+        { label: 'Name A-Z', value: 'name-asc' },
+        { label: 'Name Z-A', value: 'name-desc' },
+        { label: 'Rating Ascending', value: 'rating-asc' },
+        { label: 'Rating Descending', value: 'rating-desc' },
+      ],
+    },
+    category: {
+      options: [],
+      selected: ''
+    },
   }
 };
 
@@ -17,11 +23,21 @@ const filterReducer = (
   action = null
 ) => {
 
+  let newState;
   const { payload } = action;
+  const { filter, selected, options } = payload;
+
   switch (action.type) {
-    case types.UPDATE_SELECTED_SORT_OPTION: {
-      return { ...state, sortBy: payload };
-    }
+
+    case types.UPDATE_SELECTED_FILTER_OPTION:
+      newState = {...state};
+      newState[filter].selected = selected;
+      return newState;
+
+    case types.UPDATE_FILTER_OPTIONS_LIST:
+      newState = {...state};
+      newState[filter].options = options;
+
     default:
       return { ...state } ;
   }
