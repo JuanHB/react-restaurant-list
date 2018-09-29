@@ -1,7 +1,7 @@
 import * as types from 'src/actions/Types';
 
-let initialState = () => {
-  return {
+let initialState = () => (
+  {
     sort: {
       selected: 'name-asc',
       options: [
@@ -16,7 +16,7 @@ let initialState = () => {
       selected: ''
     },
   }
-};
+);
 
 const filterReducer = (
   state = initialState(),
@@ -24,8 +24,7 @@ const filterReducer = (
 ) => {
 
   let newState;
-  const { payload } = action;
-  const { filter, selected, options } = payload;
+  const { filter, selected, options } = action;
 
   switch (action.type) {
 
@@ -37,6 +36,7 @@ const filterReducer = (
     case types.UPDATE_FILTER_OPTIONS_LIST:
       newState = {...state};
       newState[filter].options = options;
+      return newState;
 
     default:
       return { ...state } ;
