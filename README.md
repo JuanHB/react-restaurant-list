@@ -2,6 +2,8 @@
 
 A simple list of restaurants to study React and development patterns.
 
+Live demo: https://juanhb.github.io/react-restaurant-list
+
 ### How to run
 
 Run on development mode
