@@ -19,3 +19,12 @@ export const updateFilterOptionsList = (filter, options) => ({
   type: types.UPDATE_FILTER_OPTIONS_LIST,
   filter, options
 });
+
+export const storeLoadedRestaurantDetails = restaurant => ({
+  type: types.STORE_LOADED_RESTAURANT_DETAILS,
+  restaurant
+});
+
+export const clearsLoadedRestaurantDetails = () => ({
+  type: types.CLEARS_LOADED_RESTAURANT_DETAILS
+});

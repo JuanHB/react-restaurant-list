@@ -18,8 +18,9 @@ class RestaurantService {
       .then(res => res.data.data);
   }
 
-  getById() {
-    return this.http.get(`/restaurant/${id}`);
+  getById(id) {
+    return this.http.get(`/restaurants/${id}`)
+      .then(res => res.data);
   }
 }
 

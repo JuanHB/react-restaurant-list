@@ -20,7 +20,6 @@ class RestaurantListContainer extends React.Component {
           // stores the returned restaurants list on the reducer,
           // the reducer will remove duplicated items
           this.props.storeRestaurantInitialListLoad(res);
-
           const { location, restaurant, filter } = this.props;
           const { sourceList } = restaurant;
           // parsing the query params
@@ -58,13 +57,14 @@ class RestaurantListContainer extends React.Component {
   }
 
   render() {
-    return (
+    const listLoaded = !!this.props.restaurant.sourceList.length;
+    return listLoaded ? (
       <div>
         <Header/>
         <Filter/>
         <List/>
       </div>
-    );
+    ) : <div>Loading...</div>;
   }
 }
 

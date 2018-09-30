@@ -1,3 +1,6 @@
+import { uniqueElements, flatten } from "src/helpers/ArrayHelpers";
+import { capitalizeEveryWord } from "src/helpers/StringHelpers";
+
 /**
  * Filters the given list by the string query
  * Props from the object:
@@ -36,6 +39,8 @@ const FilterByCategory = ({ list, category }) => {
  */
 const SortList = ({ list, sortBy }) => {
   const [prop, order] = sortBy.split('-');
+  // gets the first name of a string with spaces and
+  // returns it on lower case
   const firstNameToLower = (fullName) => {
     const wsIndex = fullName.indexOf(' ');
     let result = wsIndex === -1
@@ -76,39 +81,6 @@ const ExtractCategories = ({ list }) => {
     return p1 > p2 ? 1 : p1 < p2 ? -1 : 0
   });
 };
-
-
-/**
- * ===================
- * Auxiliary functions
- * ===================
- */
-
-/**
- * Flattens the array
- * @param arr
- * @param depth
- * @returns {*}
- */
-const flatten = (arr, depth = 1) => (
-  arr.reduce((a, v) => a.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1) : v), [])
-);
-
-/**
- * Returns a new array with only unique elements
- * @param arr
- * @returns {*[]}
- */
-const uniqueElements = arr => [...new Set(arr)];
-
-/**
- * Capitalize every word in a string
- * @param str
- * @returns {*}
- */
-const capitalizeEveryWord = str => (
-  str.replace(/\b[a-z]/g, char => char.toUpperCase())
-);
 
 
 export { FilterByQuery, SortList, ExtractCategories, FilterByCategory };

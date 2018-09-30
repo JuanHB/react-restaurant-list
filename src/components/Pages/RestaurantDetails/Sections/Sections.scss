@@ -1,0 +1,57 @@
+@import "src/styles/variables.scss";;
+
+.details-container__sections {
+
+  box-shadow: $box-shadow;
+  padding: 12px;
+  margin-top: 16px;
+
+  .section__block {
+
+    padding: 8px;
+    margin: 8px;
+
+    .section__name {
+      font-size: 18px;
+    }
+
+    .section__items {
+      margin-left: 24px;
+      margin-top: 12px;
+      padding: 4px;
+    }
+
+    .section__item {
+      margin: 4px 8px 12px 8px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      .item__name {
+        flex-basis: 10%;
+      }
+      .item__desc {
+        flex-basis: 20%;
+      }
+      .item__price {
+        flex-basis: 30%;
+      }
+      .item_button {
+        button {
+          border: 0;
+          background-color: #eeeeee;
+          color: #6f6f6f;
+          padding: 10px;
+          cursor: pointer ;
+          box-shadow: $box-shadow;
+
+        }
+      }
+
+    }
+  }
+
+  ul {
+    list-style-type: none;
+  }
+}
