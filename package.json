@@ -4,10 +4,10 @@
   "description": "React Restaurant List Example",
   "repository": "https://github.com/juanhb/react-restaurant-list",
   "main": "index.js",
-  "homepage": "/react-restaurant-list/",
+  "homepage": "https://juanhb.github.io/react-restaurant-list/",
   "scripts": {
-    "start": "webpack-dev-server -d --config ./webpack.config.dev.js",
-    "build": "webpack --config ./webpack.config.prod.js",
+    "start": "webpack-dev-server --env development -d --config ./webpack.config.dev.js",
+    "build": "webpack --env production --config ./webpack.config.prod.js",
     "deploy": "gh-pages -d build"
   },
   "keywords": [],
@@ -30,7 +30,6 @@
     "redux-devtools": "^3.4.1",
     "sass-loader": "^7.1.0",
     "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
     "webpack-merge": "^4.1.4"
   },
@@ -44,6 +43,7 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
-    "style-loader": "^0.23.0"
+    "style-loader": "^0.23.0",
+    "webpack-cli": "^3.1.2"
   }
 }

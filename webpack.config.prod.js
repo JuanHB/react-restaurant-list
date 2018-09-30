@@ -7,6 +7,6 @@ module.exports = merge(common, {
   output: {
     path: __dirname + '/build',
     publicPath: '/',
-    filename: 'bundle.[hash].js'
+    filename: 'react-restaurant-list/bundle.[hash:8].js'
   },
 });

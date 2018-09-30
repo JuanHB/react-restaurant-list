@@ -5,10 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHardDiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
-
-
 module.exports = {
   entry: './src/index.js',
+  mode: 'none',
   module: {
     rules: [
       {
@@ -35,11 +34,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
-      template: './src/index.html'
-
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      template: './src/index.html',
     }),
     new HtmlWebpackHardDiskPlugin(),
     new webpack.HotModuleReplacementPlugin(),
