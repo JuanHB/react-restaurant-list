@@ -1,11 +1,11 @@
 import React from 'react';
 import * as actions from 'src/actions/Actions';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import RestaurantService from 'src/services/RestaurantService'
-import queryString from 'query-string';
 import Sections from './Sections/Sections';
 import DescriptionCard from 'src/components/Shared/DescriptionCard/DescriptionCard';
+import BackButton from 'src/components/Shared/BackButton/BackButton';
 import './RestaurantDetailsContainer.scss';
 
 class RestaurantDetailsContainer extends React.Component {
@@ -28,12 +28,13 @@ class RestaurantDetailsContainer extends React.Component {
     // creating each prop for the description card component
     const descProps = {
       name: restaurant.info.name,
+      // the url inside the restaurant object wasn't working, this is a workaround to it
       image: `https://loremflickr.com/200/200/food?lock=${id}`,
       rating: restaurant.rating.average,
       address: `${streetName}, ${streetNumber}, ${district} - ${city}, ${country}`,
       categories: restaurant.info.categories
     };
-    return <DescriptionCard {...descProps} />
+    return <DescriptionCard { ...descProps } />
   };
 
   render() {
@@ -41,13 +42,14 @@ class RestaurantDetailsContainer extends React.Component {
     const restaurant = this.props.restaurant.loadedRestaurant;
     return restaurant ? (
         <div className='details-container'>
-          {this.renderDescriptionCard()}
+          <BackButton> Back to List </BackButton>
+          { this.renderDescriptionCard() }
           <Sections sections={ restaurant.sections }/>
+          <BackButton> Back to List </BackButton>
         </div>
       )
       : <div>Loading...</div>;
   }
-
 }
 
 const mapStateToProps = state => ({

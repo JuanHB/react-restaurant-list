@@ -1,0 +1,19 @@
+@import 'src/styles/variables.scss';
+
+.back-button {
+  box-shadow: $box-shadow;
+  align-self: start;
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 14px;
+  user-select: none;
+
+  &:hover {
+    transition: .250s;
+    background-color: #d3d3d3;
+  }
+  &:active {
+    background-color: #e6e6e6;
+  }
+
+}

@@ -6,6 +6,7 @@ const HtmlWebpackHardDiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
+
 module.exports = {
   entry: './src/index.js',
   module: {
@@ -31,15 +32,14 @@ module.exports = {
       'src' : path.resolve(__dirname, './src')
     }
   },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
   plugins: [
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
       template: './src/index.html'
+
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
     new HtmlWebpackHardDiskPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -51,10 +51,4 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     })
   ],
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-    https: true,
-    historyApiFallback: true,
-  },
 };

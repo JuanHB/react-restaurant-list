@@ -1,10 +1,15 @@
 import React from 'react';
+import { toCurrency } from 'src/helpers/NumberHelpers';
 import './Sections.scss';
 
 const Sections = (props) => {
 
   const { sections } = props;
 
+  /**
+   * Handles the button click
+   * @param item
+   */
   const handleItemButtonClick = item => console.log(item);
 
   const renderSections = () => {
@@ -17,7 +22,7 @@ const Sections = (props) => {
               <li key={ item.id } className='section__item'>
                 <div className='item__name'>{ item.name }</div>
                 <div className='item__desc'>{ item.description }</div>
-                <div className='item__price'>${ item.price.toFixed(2) }</div>
+                <div className='item__price'>{ toCurrency(item.price, 'EUR') }</div>
                 <div className='item_button'>
                   <button onClick={() => handleItemButtonClick(item)}>Add To Cart</button>
                 </div>

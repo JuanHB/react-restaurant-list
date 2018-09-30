@@ -1,8 +1,13 @@
+@import 'src/styles/variables.scss';
 .header {
   text-align: center;
-  width: auto;
-  height: 64px;
-  display: inline-block;
-  vertical-align: middle;
+  width: 100%;
+  height: 80px;
+  display: flex;
   line-height: normal;
+  box-shadow: $box-shadow;
+  h1 {
+    align-self: center;
+    width: 100%;
+  }
 }

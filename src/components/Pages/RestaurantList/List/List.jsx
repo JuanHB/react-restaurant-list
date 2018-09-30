@@ -11,6 +11,7 @@ class List extends React.Component {
     const { street_name, street_number, district, city, country } = address;
     const cardProps = {
       name: general.name,
+      // the url inside the restaurant object wasn't working, this is a workaround to it
       image: `https://loremflickr.com/200/200/food?lock=${rest.id}`,
       rating: restRating.average,
       address: `${street_name}, ${street_number}, ${district} - ${city}, ${country}`,
@@ -20,7 +21,7 @@ class List extends React.Component {
       <Link to={ `/restaurant/${rest.id}` } key={ rest.id }>
         <DescriptionCard { ...cardProps } className='list__item'/>
       </Link>
-    )
+    );
   });
 
   render() {
