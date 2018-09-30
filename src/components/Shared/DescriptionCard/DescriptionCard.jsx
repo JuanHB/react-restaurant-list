@@ -1,5 +1,6 @@
 import React from 'react';
 import { capitalizeEveryWord } from "src/helpers/StringHelpers";
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types'
 import './DescriptionCard.scss';
 
@@ -12,7 +13,11 @@ const DescriptionCard = (props) => {
       <ul>
         {
           categories.map((cat, i) =>
-            <li key={ i }> { capitalizeEveryWord(cat.split('-').join(' ')) } </li>
+            <Link to={`/?category=${cat}`}>
+              <li key={ i }>
+                { capitalizeEveryWord(cat.split('-').join(' ')) }
+              </li>
+            </Link>
           )
         }
       </ul>
@@ -46,6 +51,7 @@ DescriptionCard.propTypes = {
   rating: PropTypes.number,
   address: PropTypes.string,
   categories: PropTypes.array,
+  categoryButtonFilter: PropTypes.boolean
 };
 
 export default DescriptionCard;
